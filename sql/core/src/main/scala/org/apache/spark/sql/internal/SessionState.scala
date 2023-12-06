@@ -88,6 +88,7 @@ private[sql] class SessionState(
     resourceLoaderBuilder: () => SessionResourceLoader,
     createQueryExecution: (LogicalPlan, CommandExecutionMode.Value) => QueryExecution,
     createClone: (SparkSession, SessionState) => SessionState,
+    val executedPlanPrepRules: Seq[Rule[SparkPlan]],
     val columnarRules: Seq[ColumnarRule],
     val adaptiveRulesHolder: AdaptiveRulesHolder,
     val planNormalizationRules: Seq[Rule[LogicalPlan]],
